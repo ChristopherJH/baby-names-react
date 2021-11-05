@@ -8,7 +8,7 @@ function App(): JSX.Element {
 
 function BabyList(): JSX.Element {
   return (
-    <div>
+    <div className="baby-list">
       <hr />
       <section id="baby-names">
         {babyNames.map(ObjectToBaby)}

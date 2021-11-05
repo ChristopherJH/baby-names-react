@@ -1,0 +1,27 @@
+body {
+  background-color: #efebe9;
+}
+
+.baby-list {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.f,
+.m {
+  display: inline-block;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.f {
+  background-color: #f8bbd0;
+  color: #880e4f;
+}
+
+.m {
+  background-color: #bbdefb;
+  color: #0d47a1;
+}
