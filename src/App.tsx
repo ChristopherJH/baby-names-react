@@ -11,10 +11,16 @@ function BabyList(): JSX.Element {
     <div className="baby-list">
       <hr />
       <section id="baby-names">
-        {babyNames.map(ObjectToBaby)}
+        {babyNames.sort(alphabetizeBabies).map(ObjectToBaby)}
       </section>
     </div>
   );
+}
+
+function alphabetizeBabies(a: BabyProps, b: BabyProps) {
+  if(a.name < b.name) { return -1; }
+  if(a.name > b.name) { return 1; }
+  return 0;
 }
 
 function BabyCard(props: BabyProps): JSX.Element {
