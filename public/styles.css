@@ -16,18 +16,24 @@ body {
   border-radius: 3px;
 }
 
-.f {
+.f,
+#f-button {
   background-color: #f8bbd0;
   color: #880e4f;
 }
 
-.m {
+.m,
+#m-button {
   background-color: #bbdefb;
   color: #0d47a1;
 }
 
-.searchbar {
-  margin: 30px auto;
-  background-color: pink;
-  text-align: center;
+.search {
+  margin: 20px auto;
+  display: flex;
+  width: 50vw;
+}
+
+.sex-buttons {
+  display: flex;
 }
