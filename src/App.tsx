@@ -1,50 +1,23 @@
-import babyNames from "./babyNamesData.json"
+import { useState } from "react";
+import BabyList from "./components/BabyList";
+import babies from "./babyNamesData.json"
+import Search from "./components/Search";
 
 function App(): JSX.Element {
+  const [searchInput, setSearchInput] = useState("")
+
   return (
-    <BabyList />
+    <>
+      <Search 
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
+      <BabyList 
+        searchInput={searchInput}
+        babies={babies}
+      />
+    </>
   );
-}
-
-function BabyList(): JSX.Element {
-  return (
-    <div className="baby-list">
-      <hr />
-      <section id="baby-names">
-        {babyNames.sort(alphabetizeBabies).map(ObjectToBaby)}
-      </section>
-    </div>
-  );
-}
-
-function alphabetizeBabies(a: BabyProps, b: BabyProps) {
-  if(a.name < b.name) { return -1; }
-  if(a.name > b.name) { return 1; }
-  return 0;
-}
-
-function BabyCard(props: BabyProps): JSX.Element {
-  return (
-    <div id={props.name} className={props.sex}>
-      {props.name}
-    </div>
-  )
-}
-
-function ObjectToBaby(baby: BabyProps): JSX.Element {
-  return (
-    <BabyCard 
-      id = {baby.id}
-      name = {baby.name}
-      sex = {baby.sex}
-    />
-  );
-}
-
-interface BabyProps {
-  id: number;
-  name: string;
-  sex: string;
-}
+  }
 
 export default App;
