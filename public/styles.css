@@ -25,3 +25,9 @@ body {
   background-color: #bbdefb;
   color: #0d47a1;
 }
+
+.searchbar {
+  margin: 30px auto;
+  background-color: pink;
+  text-align: center;
+}
