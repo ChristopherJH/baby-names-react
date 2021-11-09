@@ -1,34 +1,48 @@
-import { ObjectToBaby } from "./BabyCard";
+import { BabyCard } from "./BabyCard";
 import BabyProps from "./BabyProps";
+import oddOccurences from "./oddOccurences";
 
-interface SearchProps {
+export interface SearchProps {
   searchInput: string;
   babyList: BabyProps[];
-  setBabyList: (babies: BabyProps[]) => void;
   sexSearch: string;
+  setFavourites: React.Dispatch<React.SetStateAction<string[]>>;
+  favourites: string[];
 }
 
 export default function BabyList(searchProps: SearchProps): JSX.Element {
-  function organiseBabies() {
-    const sortedBabies = searchProps.babyList.sort(alphabetizeBabies);
-    let sortedAndFilteredBabies = sortedBabies.filter((baby) =>
-      baby.name.toLowerCase().includes(searchProps.searchInput.toLowerCase())
-    );
-    if (searchProps.sexSearch !== "") {
-      sortedAndFilteredBabies = sortedAndFilteredBabies.filter(
-        (baby) => baby.sex === searchProps.sexSearch
-      );
-    }
-    const objectBabies = sortedAndFilteredBabies.map(ObjectToBaby);
-    return objectBabies;
-  }
-
   return (
     <div className="baby-list">
       <hr />
-      <section id="baby-names">{organiseBabies()}</section>
+      <section id="baby-names">{organiseBabies(searchProps)}</section>
     </div>
   );
+}
+
+function organiseBabies(searchProps: SearchProps) {
+  const sortedBabies = searchProps.babyList.sort(alphabetizeBabies);
+  let sortedAndFilteredBabies = sortedBabies.filter(
+    (baby) =>
+      baby.name.toLowerCase().includes(searchProps.searchInput.toLowerCase()) &&
+      !oddOccurences(searchProps.favourites, baby.name)
+  );
+  if (searchProps.sexSearch !== "") {
+    sortedAndFilteredBabies = sortedAndFilteredBabies.filter(
+      (baby) => baby.sex === searchProps.sexSearch
+    );
+  }
+  const objectBabies = sortedAndFilteredBabies.map((baby) => {
+    return (
+      <BabyCard
+        key={baby.id}
+        id={baby.id}
+        sex={baby.sex}
+        name={baby.name}
+        setFavourites={searchProps.setFavourites}
+      />
+    );
+  });
+  return objectBabies;
 }
 
 function alphabetizeBabies(a: BabyProps, b: BabyProps) {

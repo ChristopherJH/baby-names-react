@@ -14,6 +14,7 @@ body {
   padding: 4px;
   margin: 5px;
   border-radius: 3px;
+  height: 20px;
 }
 
 .f,
@@ -36,4 +37,18 @@ body {
 
 .sex-buttons {
   display: flex;
+}
+
+.favourites-bar {
+  margin: 50px;
+}
+
+.f:hover,
+#f-button:hover {
+  background-color: #ffcdd2;
+}
+
+.m:hover,
+#m-button:hover {
+  background-color: #c5cae9;
 }

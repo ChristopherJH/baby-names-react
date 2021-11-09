@@ -1,13 +1,21 @@
-import BabyProps from "./BabyProps";
+interface CardProps {
+  id: number;
+  name: string;
+  sex: string;
+  setFavourites: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
-export function BabyCard(props: BabyProps): JSX.Element {
+export function BabyCard(props: CardProps): JSX.Element {
   return (
-    <div id={props.name} className={props.sex}>
+    <div
+      id={props.name}
+      className={props.sex}
+      onClick={() =>
+        props.setFavourites((prevFavs: string[]) => [...prevFavs, props.name])
+      }
+    >
+      {" "}
       {props.name}
     </div>
   );
-}
-
-export function ObjectToBaby(baby: BabyProps): JSX.Element {
-  return <BabyCard id={baby.id} name={baby.name} sex={baby.sex} />;
 }

@@ -1,31 +1,49 @@
-import BabyProps from "./BabyProps";
+import { BabyCard } from "./BabyCard";
+import oddOccurences from "./oddOccurences";
 
-interface FavProps {
+interface BabyProps {
+  id: number;
+  name: string;
+  sex: string;
+}
+
+export interface FavProps {
   favourites: string[];
-  setFavourites: (input: string[]) => void;
+  setFavourites: React.Dispatch<React.SetStateAction<string[]>>;
   babyList: BabyProps[];
 }
 
 export function Favourites(favProps: FavProps): JSX.Element {
+  function filterFavourites(babies: BabyProps[]): BabyProps[] {
+    return babies.filter(
+      (baby) =>
+        favProps.favourites.includes(baby.name) &&
+        oddOccurences(favProps.favourites, baby.name)
+    );
+  }
+
+  function displayFavourites(babies: BabyProps[]): JSX.Element {
+    console.log(filterFavourites(babies));
+    return (
+      <>
+        {filterFavourites(babies).map((baby) => {
+          return (
+            <BabyCard
+              key={baby.id}
+              id={baby.id}
+              sex={baby.sex}
+              name={baby.name}
+              setFavourites={favProps.setFavourites}
+            />
+          );
+        })}
+      </>
+    );
+  }
   return (
     <div className="favourites-bar">
       <h2>Favourites:</h2>
-      {/* {favourites.map(ObjectToBaby)} */}
+      {displayFavourites(favProps.babyList)}
     </div>
   );
 }
-
-// export function toggleFavourite(babyName: string, favProps: FavProps) {
-//   // if baby is in favourites remove and add to baby list
-//   // else add to favourites and remove from baby list
-// //   const filteredBabies = babyList.filter((baby) =>
-// // baby.name.toLowerCase().includes(searchProps.searchInput.toLowerCase())
-// // );
-//   console.log(babyName)
-//   if (favProps.favourites.includes(babyName)) {
-//     console.log('Removed from favourites!');
-//   } else {
-//     console.log('Added to favourites!');
-//     favProps.setFavourites([...favProps.favourites, baby.name]);
-//   }
-// }
