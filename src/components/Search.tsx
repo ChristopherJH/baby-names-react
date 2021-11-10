@@ -24,7 +24,7 @@ export default function Search(props: SearchProps): JSX.Element {
           <SexButton
             setSexSearch={props.setSexSearch}
             sexToSet=""
-            emoji="👦👧"
+            emoji="👦 👧"
           />
         )}
         {props.sexSearch !== "m" && (
