@@ -15,15 +15,12 @@ export interface FavProps {
 
 export function Favourites(favProps: FavProps): JSX.Element {
   function filterFavourites(babies: BabyProps[]): BabyProps[] {
-    return babies.filter(
-      (baby) =>
-        favProps.favourites.includes(baby.name) &&
-        oddOccurences(favProps.favourites, baby.name)
+    return babies.filter((baby) =>
+      oddOccurences(favProps.favourites, baby.name)
     );
   }
 
   function displayFavourites(babies: BabyProps[]): JSX.Element {
-    console.log(filterFavourites(babies));
     return (
       <>
         {filterFavourites(babies).map((baby) => {
