@@ -1,4 +1,4 @@
-import BabyProps from "./BabyProps";
+import BabyProps from "../components/BabyProps";
 
 function oddOccurences(favArray: BabyProps[], name: string): boolean {
   let count = 0;

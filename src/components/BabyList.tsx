@@ -1,6 +1,6 @@
 import { BabyCard } from "./BabyCard";
 import BabyProps from "./BabyProps";
-import oddOccurences from "./oddOccurences";
+import oddOccurences from "../utils/oddOccurences";
 
 export interface SearchProps {
   searchInput: string;

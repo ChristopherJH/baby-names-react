@@ -1,5 +1,5 @@
 import { BabyCard } from "./BabyCard";
-import oddOccurences from "./oddOccurences";
+import oddOccurences from "../utils/oddOccurences";
 
 interface BabyProps {
   id: number;
@@ -35,6 +35,7 @@ export function Favourites(favProps: FavProps): JSX.Element {
       </>
     );
   }
+  console.log(favProps.favourites);
   return (
     <div className="favourites-bar">
       <h2>Favourites:</h2>
