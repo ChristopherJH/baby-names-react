@@ -8,8 +8,8 @@ interface BabyProps {
 }
 
 export interface FavProps {
-  favourites: string[];
-  setFavourites: React.Dispatch<React.SetStateAction<string[]>>;
+  favourites: BabyProps[];
+  setFavourites: (callback: (previous: BabyProps[]) => BabyProps[]) => void;
   babyList: BabyProps[];
 }
 
@@ -27,9 +27,7 @@ export function Favourites(favProps: FavProps): JSX.Element {
           return (
             <BabyCard
               key={baby.id}
-              id={baby.id}
-              sex={baby.sex}
-              name={baby.name}
+              baby={baby}
               setFavourites={favProps.setFavourites}
             />
           );
@@ -40,7 +38,8 @@ export function Favourites(favProps: FavProps): JSX.Element {
   return (
     <div className="favourites-bar">
       <h2>Favourites:</h2>
-      {displayFavourites(favProps.babyList)}
+      <p>Click names to add/remove them to/from your favourites.</p>
+      {displayFavourites(favProps.favourites)}
     </div>
   );
 }

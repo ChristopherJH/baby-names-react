@@ -6,8 +6,8 @@ export interface SearchProps {
   searchInput: string;
   babyList: BabyProps[];
   sexSearch: string;
-  setFavourites: React.Dispatch<React.SetStateAction<string[]>>;
-  favourites: string[];
+  setFavourites: (callback: (previous: BabyProps[]) => BabyProps[]) => void;
+  favourites: BabyProps[];
 }
 
 export default function BabyList(searchProps: SearchProps): JSX.Element {
@@ -15,6 +15,7 @@ export default function BabyList(searchProps: SearchProps): JSX.Element {
     <div className="baby-list">
       <hr />
       <section id="baby-names">{organiseBabies(searchProps)}</section>
+      <hr />
     </div>
   );
 }
@@ -35,9 +36,7 @@ function organiseBabies(searchProps: SearchProps) {
     return (
       <BabyCard
         key={baby.id}
-        id={baby.id}
-        sex={baby.sex}
-        name={baby.name}
+        baby={baby}
         setFavourites={searchProps.setFavourites}
       />
     );

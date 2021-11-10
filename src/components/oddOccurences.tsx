@@ -1,7 +1,9 @@
-function oddOccurences(favArray: string[], name: string): boolean {
+import BabyProps from "./BabyProps";
+
+function oddOccurences(favArray: BabyProps[], name: string): boolean {
   let count = 0;
   for (const fav of favArray) {
-    if (fav === name) {
+    if (fav.name === name) {
       count += 1;
     }
   }
