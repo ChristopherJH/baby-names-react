@@ -34,7 +34,8 @@ body {
   color: #0d47a1;
 }
 
-.m:hover .f:hover {
+.m:hover,
+.f:hover {
   cursor: pointer;
   box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1);
 }
@@ -123,7 +124,8 @@ body {
 }
 
 #-button {
-  width: 40px;
+  width: 45px;
+  text-align: center;
 }
 
 #m-button,
@@ -148,6 +150,7 @@ body {
 .favourites-bar {
   min-height: 150px;
   margin: 10px 20px;
+  color: gray;
 }
 
 /* Footer */
