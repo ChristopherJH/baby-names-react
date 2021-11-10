@@ -15,9 +15,11 @@ export interface FavProps {
 
 export function Favourites(favProps: FavProps): JSX.Element {
   function filterFavourites(babies: BabyProps[]): BabyProps[] {
-    return babies.filter((baby) =>
+    const filteredBabies = babies.filter((baby) =>
       oddOccurences(favProps.favourites, baby.name)
     );
+    const setBabies = new Set(filteredBabies);
+    return Array.from(setBabies);
   }
 
   function displayFavourites(babies: BabyProps[]): JSX.Element {
@@ -35,11 +37,12 @@ export function Favourites(favProps: FavProps): JSX.Element {
       </>
     );
   }
-  console.log(favProps.favourites);
   return (
     <div className="favourites-bar">
-      <h2>Favourites:</h2>
-      <p>Click names to add/remove them to/from your favourites.</p>
+      <h3>Favourites:</h3>
+      {favProps.favourites.length === 0 && (
+        <span>(Click names to add/remove them to/from your favourites)</span>
+      )}
       {displayFavourites(favProps.favourites)}
     </div>
   );
