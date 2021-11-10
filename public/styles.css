@@ -55,7 +55,7 @@ body {
 /* Search */
 
 .search {
-  margin: 20px auto;
+  margin: 20px;
   display: flex;
   width: 50vw;
 }
