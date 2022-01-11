@@ -21,6 +21,7 @@
     "type-check": "tsc --noEmit",
     "test-cypress-local": "cypress open",
     "test-cypress-live": "cypress open --config-file ./cypress.staging.json",
+    "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "start": "react-scripts start",
     "build": "react-scripts build"
